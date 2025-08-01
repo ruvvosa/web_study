@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연습문제 2</title>
+	<style>
+		input{
+			width: 20px;
+		
+		}
+		#btn{
+			margin-left: 10px;
+		}
+		table{
+			width: 300px;
+		}
+
+		table,td{
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		td{
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<label><input id ="row">행</label>
+	<label><input id ="col">열</label>
+	<button id ="btn" onclick="drawTable(); return false;">작성</button> 
+
+	<script>
+		function drawTable(){
+
+			var table = document.createElement("table"); //요소 생성
+			var row = document.querySelector("#row").value; //input 값 가져옴
+			var col = document.querySelector("#col").value;
+	
+			for(var i = 0; i < row; i++ ){
+				var tr = document.createElement("tr"); //입력한 행의 개수만큼 반복하면서 tr요소 노드를 만듦
+				for(var j = 0; j < col; j++){
+					var td = document.createElement("td");
+					var textNode = document.createTextNode(i + ","+ j); //텍스트 노드 생성
+					td.appendChild(textNode); //텍스트노드를 td의 자식 노드로 만듦
+					tr.appendChild(td); //td노드를 tr의 자식 노드로 만듦
+				}
+				table.appendChild(tr); //tr노드를 table의 자식 노드로 만듦
+			}
+			document.body.appendChild(table); //위치 추가
+		}
+	
+	</script>
+</body>
+</html>
